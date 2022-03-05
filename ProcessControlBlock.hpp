@@ -6,8 +6,10 @@
 
 typedef PageTableEntry PageTable[NUMBER_OF_PAGES];
 
+PageTable page_table;
+
 struct ProcessControlBlock {
-  // ...
+  PageTable *ptr_page_table;
 };
 
 #endif
