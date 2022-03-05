@@ -14,6 +14,7 @@ typedef TLBEntry TLB[NUMBER_OF_TLB_ENTRIES];
 class MemoryManagementUnit {
 public:
   MemoryManagementUnit();
+  void read();
   int get_tlb_access_count();
   int get_tlb_hit_count();
   int get_page_access_count();
