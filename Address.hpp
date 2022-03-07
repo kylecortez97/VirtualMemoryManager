@@ -7,6 +7,7 @@ struct Address : public Word {
   Word address();
   Word displacement();
   Word page();
+  Word frame();
 };
 
 #endif

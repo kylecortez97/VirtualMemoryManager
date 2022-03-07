@@ -1,5 +1,4 @@
 #include "MemoryManagementUnit.hpp"
-#include "ProcessControlBlock.hpp"
 
 MemoryManagementUnit::MemoryManagementUnit() {
   for (int i = 0; i < NUMBER_OF_TLB_ENTRIES; i++) tlb_[i].pte.valid = false;
@@ -8,10 +7,6 @@ MemoryManagementUnit::MemoryManagementUnit() {
   tlb_hit_count_ = 0;
   page_access_count_ = 0;
   page_fault_count_ = 0;
-}
-
-void MemoryManagementUnit::read() {
-  // ...
 }
 
 int MemoryManagementUnit::get_tlb_access_count() {

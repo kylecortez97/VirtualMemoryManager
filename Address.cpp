@@ -2,19 +2,17 @@
 #include "Configuration.hpp"
 
 Word Address::address() {
-  const int ADDRESS_MASK = (1 << NUMBER_OF_ADDRESS_BITS) - 1;
-  Word word;
-  word.value_ = value_ & ADDRESS_MASK;
-  return word;
+  return { value_ & MASK_FOR_ADDRESS };
 }
 
 Word Address::displacement() {
-  const int DISPLACEMENT_MASK = (1 << NUMBER_OF_DISPLACEMENT_BITS) - 1;
-  Word word;
-  word.value_ = address() & DISPLACEMENT_MASK;
-  return word;
+  return { address() & MASK_FOR_DISPLACEMENT };
 }
 
 Word Address::page() {
-  // ...
+  return { (address() & MASK_FOR_PAGE) >> NUMBER_OF_DISPLACEMENT_BITS };
+}
+
+Word Address::frame() {
+  return { 0 }; // Change...
 }
