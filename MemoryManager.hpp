@@ -3,6 +3,7 @@
 
 class MemoryManager {
 public:
+  void page_in();
 private:
 };
 
