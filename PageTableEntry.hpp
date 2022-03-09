@@ -2,7 +2,7 @@
 #define PAGE_TABLE_ENTRY_HPP
 
 struct PageTableEntry {
-  unsigned int frame_number;
+  unsigned int frameNumber;
   bool valid;
 };
 

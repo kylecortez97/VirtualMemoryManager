@@ -7,7 +7,9 @@
 typedef PageTableEntry PageTable[NUMBER_OF_PAGES];
 
 struct ProcessControlBlock {
-  PageTable page_table;
+  PageTable myPageTable;
 };
+
+extern ProcessControlBlock pcb;
 
 #endif

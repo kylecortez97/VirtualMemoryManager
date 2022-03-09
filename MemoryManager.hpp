@@ -3,8 +3,12 @@
 
 class MemoryManager {
 public:
-  void page_in();
+  MemoryManager(const MemoryManager &) = delete;
+  MemoryManager &operator=(const MemoryManager &) = delete;
+  static MemoryManager &instance();
+  void pageIn();
 private:
+  MemoryManager();
 };
 
 #endif

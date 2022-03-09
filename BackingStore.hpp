@@ -5,11 +5,14 @@
 
 class BackingStore {
 public:
-  BackingStore();
+  BackingStore(const BackingStore &) = delete;
+  BackingStore &operator=(const BackingStore &) = delete;
+  static BackingStore &instance();
   void read();
   ~BackingStore();
 private:
-  std::ifstream media_;
+  BackingStore();
+  std::basic_ifstream<unsigned int> media_;
 };
 
 #endif

@@ -1,14 +1,20 @@
 #include <iostream>
 
 #include "BackingStore.hpp"
+#include "Ram.hpp"
 
 BackingStore::BackingStore() {
-  media_.open("BACKING_STORE.bin", std::ios_base::binary | std::ios_base::in);
+  this->media_.open("BACKING_STORE.bin", std::ios_base::binary | std::ios_base::in);
 
-  if (!media_.is_open()) {
-    std::cerr << "The Backing Store File Does Not Exist.\n";
+  if (!this->media_.is_open()) {
+    std::cerr << "The Backing Store File Cannot Be Found.\n";
     exit(EXIT_FAILURE);
   }
+}
+
+BackingStore &BackingStore::instance() {
+  static BackingStore instance_;
+  return instance_;
 }
 
 void BackingStore::read() {
@@ -16,5 +22,5 @@ void BackingStore::read() {
 }
 
 BackingStore::~BackingStore() {
-  media_.close();
+  this->media_.close();
 }

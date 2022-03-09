@@ -6,11 +6,14 @@
 #include "MemoryManagementUnit.hpp"
 
 uint32_t value;
-MemoryManagementUnit mmu;
 
 int main() {
   while (std::cin >> value) {
-    // Do Something...
+    try {
+      MemoryManagementUnit::instance().read(value);
+    } catch (MemoryManagementUnit::PageFault &e) {
+      // Do Something...
+    }
   }
 
   return EXIT_SUCCESS;
