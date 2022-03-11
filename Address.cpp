@@ -1,19 +1,26 @@
 #include "Address.hpp"
 #include "Configuration.hpp"
-#include "ProcessControlBlock.hpp"
 
 Word Address::address() {
-  return { this->value_ & MASK_FOR_ADDRESS };
+  return { value_ & MASK_OF_ADDRESS };
+}
+
+Word Address::address() const {
+  return { value_ & MASK_OF_ADDRESS };
 }
 
 Word Address::displacement() {
-  return { this->value_ & MASK_FOR_DISPLACEMENT };
+  return { address() & MASK_OF_DISPLACEMENT };
+}
+
+Word Address::displacement() const {
+  return { address() & MASK_OF_DISPLACEMENT };
 }
 
 Word Address::page() {
-  return { (this->value_ & MASK_FOR_PAGE_NUMBER) >> NUMBER_OF_DISPLACEMENT_BITS };
+  return { (address() & MASK_OF_PAGE_NUMBER) >> NUMBER_OF_DISPLACEMENT_BITS };
 }
 
-Word Address::frame() {
-  return { pcb.myPageTable[page()].frameNumber };
+Word Address::page() const {
+  return { (address() & MASK_OF_PAGE_NUMBER) >> NUMBER_OF_DISPLACEMENT_BITS };
 }

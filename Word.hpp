@@ -6,6 +6,7 @@
 struct Word {
   uint32_t value_;
   operator uint32_t();
+  operator uint32_t() const;
 };
 
 #endif

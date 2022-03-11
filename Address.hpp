@@ -5,9 +5,13 @@
 
 struct Address : public Word {
   Word address();
+  Word address() const;
   Word displacement();
+  Word displacement() const;
   Word page();
+  Word page() const;
   Word frame();
+  Word frame() const;
 };
 
 #endif
